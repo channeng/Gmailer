@@ -1,42 +1,45 @@
 # What is Gmailer:
 
-Gmailer simplifies the sending standard email reports from any Gmail account. Currently, it is built on Nitrous.IO email template.
+Gmailer simplifies the sending standard html email reports from any Gmail account.
 
-(In future releases, it should be able to process reports with any email templates.)
+# Setting up:
 
-# How to use:
-
-1. Set up your gmail account to allow less secure apps.
-https://www.google.com/settings/security/lesssecureapps
-If you turned on two-factor authentication, create an app and generate a one-time password specific for the app.
-
+####1. Set up your gmail account to allow less secure apps
+https://www.google.com/settings/security/lesssecureapps  
+If you turned on two-factor authentication, create an app and generate a one-time password specific for the app.  
 This will allow Gmailer to send emails from Gmail.
 
-2. Set up environment variables for Gmail account and password
+####2. Set up environment variables for Gmail account and password
 (you can skip this step if you prefer to explicitly input your username and password)
 
 In terminal, type:
-`export GMAIL_USER=myusername@gmail.com`
-`export GMAIL_PWD=mysecretpassword`
+```
+export GMAIL_USER=myusername@gmail.com
+export GMAIL_PWD=mysecretpassword
+```
 My suggestion is to set the env vars to be persistent so you don't have to type it each terminal session. You can do that by inserting the export commands in .profile in your root.
 
 # How to use the module
 
-3. Create a python script in the same directory as 'Gmailer' (and this README.md)
+####3. Create a python script in the same directory as 'Gmailer' (and this README.md)
 Define the following in your script
-`from mailer_module.postman import Gmailer`
+`from mailer_module.postman import Gmailer`  
+If you have set the env vars, then also include:
+```
+import os
+username = os.environ["GMAIL_USER"]
+password = os.environ["GMAIL_PWD"]
+```
 
-If you have followed step 2, then also include:
-`import os`
-`username = os.environ["GMAIL_USER"]`
-`password = os.environ["GMAIL_PWD"]`
-
-4. Create the report tables that you would like to email
+####4. Create the report tables that you would like to email
 
 As arguments, Gmailer class accepts the following:
+
 1. gmail_credentials: Dictionary of username and password
+```
     {"username":"my_username@gmail.com",
     "password":"my_password"}
+```
 2. recipient_list: list of strings 
     ["user1@gmail.com","user2@gmail.com", ...]
 3. message_params: Dictionary of message parameters
