@@ -66,14 +66,14 @@ Following the above arguments,
 
 #####4. any number of *args dictionaries following the format below:
 - Dictionaries, consisting of the following keywords:
-  1. *table_title*: string  (required - leave "" if none)
-  2. *table_text*: string  (required - leave "" if none)
+  1. **table_title**: string  (required - leave "" if none)
+  2. **table_text**: string  (required - leave "" if none)
     * table_text appears at the bottom of the table and may appear as one of either 2 forms:
       * As a link : if a url string is provided
       * As a text paragraph : if no url string is provided
-  3. *generate_sn*: Boolean  (required - True or False)
-  4. *generate_summary*: integer (required -'Column number that you want to generate a summary of')
-  5. *table*: List of lists (required - A 2-D array containing headers)
+  3. **generate_sn**: Boolean  (required - True or False)
+  4. **generate_summary**: integer (required -'Column number that you want to generate a summary of')
+  5. **table**: List of lists (required - A 2-D array containing headers)
     * Each table must be a list of lists, where the first list element must contain the headers of the table
     * Each list within the list must have the same number of elements
     * All urls within the table will automatically be converted into links, and displayed as "Link"
