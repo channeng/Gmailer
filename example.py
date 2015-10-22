@@ -19,6 +19,7 @@ my_gmailer = Gmailer(
     # Table 1
     {
       "table_title":"Family Members",
+      "table_text":"http://www.ancestry.com/",  # <- Url in table text is automatically converted to link
       "generate_sn":False,
       "generate_summary": "gender",
       "table":
@@ -32,6 +33,7 @@ my_gmailer = Gmailer(
     # Table 2
     {
       "table_title":"", # <- Note: Leave "" if not table title to be generated
+      "table_text":"Who knew a kid from Queens was descended from royalty?", # <- Note: Leave "" if not table title to be generated
       "generate_sn":False,
       "generate_summary": "", # <- Note: Leave "" if not summary to be generated
       "table":

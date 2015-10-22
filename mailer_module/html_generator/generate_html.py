@@ -11,6 +11,7 @@ class Generate_table(object):
     self.generate_summary = table_dict["generate_summary"]
     self.table_header =  table_dict["table"][0]
     self.table_rows = table_dict["table"][1:]
+    self.table_text = table_dict["table_text"]
     # Set encoding
     reload(sys)
     sys.setdefaultencoding('utf8')
@@ -87,8 +88,15 @@ class Generate_table(object):
       table_rows_html += self.generate_table_row(row)
     return table_rows_html
 
+  def generate_table_text(self):
+    table_text = self.table_text
+    if table_text == "":
+      return ""
+    else:
+      return  '<p>&nbsp;'+check_if_url().if_url_convert(table_text) +'</p>'
+  
   def table(self):
-      return '<p><table class="table_wrapper">'+ self.generate_table_header() + self.generate_table_rows() +'</table></p><br/>' # removed table title before <table style> - <p style="font-weight: bold;">'+table_title+'</p>
+      return '<p><table class="table_wrapper">'+ self.generate_table_header() + self.generate_table_rows() +'</table></p>' + self.generate_table_text() + '<br/>'# removed table title before <table style> - <p style="font-weight: bold;">'+table_title+'</p>
   
   def as_html(self):
     if len(self.table_rows) == 0:
@@ -121,6 +129,7 @@ class Generate_email(object):
 if __name__ == '__main__':
   test_table_dict1 = {
     "table_title":"Family Members",
+    "table_text":"http://www.ancestry.com/",
     "generate_sn":False,
     "generate_summary": "Gender",
     "table":
@@ -133,6 +142,7 @@ if __name__ == '__main__':
   }
   test_table_dict2 = {
     "table_title":"Ancestors",
+    "table_text":"Who knew a kid from Queens was descended from royalty?",
     "generate_sn":False,
     "generate_summary": "gender",
     "table":
@@ -146,6 +156,6 @@ if __name__ == '__main__':
   }
   list_of_table_dicts = [test_table_dict1,test_table_dict2]
   # Test generate table function
-#   print Generate_table(test_table_dict1).as_html()
+  print Generate_table(test_table_dict2).as_html()
   # Test generate email html function
 #   print Generate_email("Daily report",list_of_table_dicts).html()
