@@ -5,19 +5,18 @@
 ## Setting up:
 
 ####Set up your gmail account to allow less secure apps
-   https://www.google.com/settings/security/lesssecureapps  
-If you turned on two-factor authentication, create an app and generate a one-time password specific for the app.  
-This will allow Gmailer to send emails from Gmail.
+- To allow Gmailer to send emails from Gmail.
+  - (Link to setup)[https://www.google.com/settings/security/lesssecureapps]
+  - If you turned on two-factor authentication, create an app and generate a one-time password specific for the app.  
 
-####Set up environment variables for Gmail account and password
-   (you can skip this step if you prefer to explicitly input your username and password)
-
+####Set up environment variables for Gmail account and password (Recommended)
+   *You can skip this step if you prefer to explicitly input your username and password*  
+   It is recommended to set the env vars to be persistent across each terminal session. You can do that by inserting the export commands in .profile in your root.  
    In terminal, type:
 ```bash
     export GMAIL_USER=myusername@gmail.com
     export GMAIL_PWD=mysecretpassword
 ```
-My suggestion is to set the env vars to be persistent so you don't have to type it each terminal session. You can do that by inserting the export commands in .profile in your root.
 
 ## How to use the module
 
