@@ -10,13 +10,15 @@
   - If you turned on two-factor authentication, create an app and generate a one-time password specific for the app.  
 
 ####Set up environment variables for Gmail account and password (Recommended)
-   *You can skip this step if you prefer to explicitly input your username and password*  
-   It is recommended to set the env vars to be persistent across each terminal session. You can do that by inserting the export commands in .profile in your root.  
+   *You can skip this step if you prefer to explicitly input your username and password*
+   
    In terminal, type:
 ```bash
     export GMAIL_USER=myusername@gmail.com
     export GMAIL_PWD=mysecretpassword
 ```
+
+   It is recommended to set the env vars to be persistent across each terminal session. You can do that by inserting the export commands above in .profile file in your root directory.
 
 ## How to use the module
 
