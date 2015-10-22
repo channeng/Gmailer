@@ -1,18 +1,18 @@
 # What is Gmailer:
 
-...Gmailer simplifies the sending standard html email reports from any Gmail account.
+   Gmailer simplifies the sending standard html email reports from any Gmail account.
 
 # Setting up:
 
 ####1. Set up your gmail account to allow less secure apps
-...https://www.google.com/settings/security/lesssecureapps  
+   https://www.google.com/settings/security/lesssecureapps  
 If you turned on two-factor authentication, create an app and generate a one-time password specific for the app.  
 This will allow Gmailer to send emails from Gmail.
 
 ####2. Set up environment variables for Gmail account and password
-...(you can skip this step if you prefer to explicitly input your username and password)
+   (you can skip this step if you prefer to explicitly input your username and password)
 
-...In terminal, type:
+   In terminal, type:
 ```
 export GMAIL_USER=myusername@gmail.com
 export GMAIL_PWD=mysecretpassword
@@ -57,17 +57,16 @@ Following the above arguments,
 
 #####4. any number of *args dictionaries following the format below:
 - Dictionaries, consisting of the following keywords:
-..1. table_title : string  (required - leave "" if none)
-..2. table_link : url string  (required - leave "" if none)
-..3. generate_sn : Boolean  (required - True or False)
-..4. generate_summary: integer (required -'Column number that you want to generate a summary of')
-..5. table : List of lists (required - A 2-D array containing headers)
---- Each table must be a list of lists, where the first list element must contain the headers of the table
---- Each list within the list must have the same number of elements
-Notes:
-- All urls within the table will automatically be converted into links, and displayed as "Link"
--- Urls must begin with 'http://' or 'https://', followed by a domain/localhost/ip address
-- Table will be generated in the same order as the list
+  1. table_title : string  (required - leave "" if none)
+  2. table_link : url string  (required - leave "" if none)
+  3. generate_sn : Boolean  (required - True or False)
+  4. generate_summary: integer (required -'Column number that you want to generate a summary of')
+  5. table : List of lists (required - A 2-D array containing headers)
+    * Each table must be a list of lists, where the first list element must contain the headers of the table
+    * Each list within the list must have the same number of elements
+    * All urls within the table will automatically be converted into links, and displayed as "Link"
+      * Urls must begin with 'http://' or 'https://', followed by a domain/localhost/ip address
+    * Table will be generated in the same order as the list
 
 5. Execute Gmailer
 
@@ -77,7 +76,7 @@ Call the send_mail method
 `Mailer.send_mail()`
 
 Full Example.
-
+```
 my_gmailer = Gmailer(
   {
     "username":"my_username@gmail.com",
@@ -104,16 +103,16 @@ my_gmailer = Gmailer(
 )
 
 my_gmailer.send_mail()
-
+```
 
 Gmailer will output the following in the email:
-
+```
 ------------------------------
 From:    John "my_username@gmail.com"
 To:      user1@gmail.com; user2@gmail.com;
 Subject: This are my family members
-
-<------- Email start ------->
+```
+```
 ------------------------------
           MY FAMILY
 ------------------------------
@@ -126,7 +125,7 @@ s/n    Name    Gender   Age
  3     Jack      M      64
 
 Table link
-<-------- Email end -------->
+```
 
 6. Templates and styling
 - Email templates should be named "template.html" and kept within mailer module.
