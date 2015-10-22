@@ -1,6 +1,6 @@
 # What is Gmailer:
 
-   Gmailer simplifies the sending standard html email reports from any Gmail account.
+   Gmailer simplifies the dispatch of standard html email reports that includes tabular data, from any Gmail account.
 
 ## Setting up:
 
