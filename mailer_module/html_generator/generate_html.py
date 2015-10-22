@@ -31,16 +31,16 @@ class Generate_table(object):
     else:
       header_list = [header.lower() for header in self.table_header]
       # Find index of column with header stated
-      col_to_summarise = 0
+      col_to_summarise = None
       for col in range(len(header_list)):
         if header_list[col] == column_to_summarise:
           col_to_summarise = col
         else:
           pass
       
-      if col_to_summarise == 0:
+      if col_to_summarise == None:
         # Raise exception if header stated is not found
-        raise ValueError(str('"'+column_to_summarise+ '" not found in table headers'))
+        print str('"'+column_to_summarise+ '" not found in table headers')
       else:
         table_rows = self.table_rows
         total_all = len(table_rows)
