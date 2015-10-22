@@ -1,18 +1,18 @@
 # What is Gmailer:
 
-Gmailer simplifies the sending standard html email reports from any Gmail account.
+...Gmailer simplifies the sending standard html email reports from any Gmail account.
 
 # Setting up:
 
 ####1. Set up your gmail account to allow less secure apps
-https://www.google.com/settings/security/lesssecureapps  
+...https://www.google.com/settings/security/lesssecureapps  
 If you turned on two-factor authentication, create an app and generate a one-time password specific for the app.  
 This will allow Gmailer to send emails from Gmail.
 
 ####2. Set up environment variables for Gmail account and password
-(you can skip this step if you prefer to explicitly input your username and password)
+...(you can skip this step if you prefer to explicitly input your username and password)
 
-In terminal, type:
+...In terminal, type:
 ```
 export GMAIL_USER=myusername@gmail.com
 export GMAIL_PWD=mysecretpassword
@@ -35,26 +35,33 @@ password = os.environ["GMAIL_PWD"]
 
 As arguments, Gmailer class accepts the following:
 
-1. gmail_credentials: Dictionary of username and password
+#####1. gmail_credentials: Dictionary of username and password
 ```
     {"username":"my_username@gmail.com",
     "password":"my_password"}
 ```
-2. recipient_list: list of strings 
+
+#####2. recipient_list: list of strings 
+```
     ["user1@gmail.com","user2@gmail.com", ...]
-3. message_params: Dictionary of message parameters
+```
+
+#####3. message_params: Dictionary of message parameters
+```
     {"from_name":"John",
     "subject":"This are my family members",
     "header":"My Family"}
+```
 
 Following the above arguments,
-4. any number of *args dictionaries following the format below:
+
+#####4. any number of *args dictionaries following the format below:
 - Dictionaries, consisting of the following keywords:
--- 1. table_title : string  (required - leave "" if none)
--- 2. table_link : url string  (required - leave "" if none)
--- 3. generate_sn : Boolean  (required - True or False)
--- 4. generate_summary: integer (required -'Column number that you want to generate a summary of')
--- 5. table : List of lists (required - A 2-D array containing headers)
+..1. table_title : string  (required - leave "" if none)
+..2. table_link : url string  (required - leave "" if none)
+..3. generate_sn : Boolean  (required - True or False)
+..4. generate_summary: integer (required -'Column number that you want to generate a summary of')
+..5. table : List of lists (required - A 2-D array containing headers)
 --- Each table must be a list of lists, where the first list element must contain the headers of the table
 --- Each list within the list must have the same number of elements
 Notes:
