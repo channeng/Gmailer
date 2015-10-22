@@ -13,9 +13,9 @@ This will allow Gmailer to send emails from Gmail.
    (you can skip this step if you prefer to explicitly input your username and password)
 
    In terminal, type:
-```
-export GMAIL_USER=myusername@gmail.com
-export GMAIL_PWD=mysecretpassword
+```bash
+    export GMAIL_USER=myusername@gmail.com
+    export GMAIL_PWD=mysecretpassword
 ```
 My suggestion is to set the env vars to be persistent so you don't have to type it each terminal session. You can do that by inserting the export commands in .profile in your root.
 
@@ -25,10 +25,10 @@ My suggestion is to set the env vars to be persistent so you don't have to type 
 Define the following in your script
 `from mailer_module.postman import Gmailer`  
 If you have set the env vars, then also include:
-```
-import os
-username = os.environ["GMAIL_USER"]
-password = os.environ["GMAIL_PWD"]
+```python
+    import os
+    username = os.environ["GMAIL_USER"]
+    password = os.environ["GMAIL_PWD"]
 ```
 
 ####Create the report tables that you would like to email
@@ -36,21 +36,29 @@ password = os.environ["GMAIL_PWD"]
 Gmailer class accepts the following arguments respectively:
 
 #####1. gmail_credentials: Dictionary of username and password
-```
-    {"username":"my_username@gmail.com",
-    "password":"my_password"}
+```python
+    {
+      "username":"my_username@gmail.com",
+      "password":"my_password"
+    }
 ```
 
 #####2. recipient_list: list of strings 
-```
-    ["user1@gmail.com","user2@gmail.com", ...]
+```python
+    [
+      "user1@gmail.com",
+      "user2@gmail.com", 
+      ...
+    ]
 ```
 
 #####3. message_params: Dictionary of message parameters
-```
-    {"from_name":"John",
-    "subject":"This are my family members",
-    "header":"My Family"}
+```python
+    {
+      "from_name":"John",
+      "subject":"This are my family members",
+      "header":"My Family"
+    }
 ```
 
 Following the above arguments,
@@ -71,16 +79,16 @@ Following the above arguments,
 ####Execute Gmailer
 
 Initiate the Gmailer class object
-```
+```python
     Mailer = Gmailer(username,password,recipient_list,dict_1,dict_2,dict_3...)
 ```
 Call the send_mail method
-```
+```python
     Mailer.send_mail()
 ```
 
 ##Full Example.
-```
+```python
 my_gmailer = Gmailer(
   {
     "username":"my_username@gmail.com",
@@ -131,7 +139,7 @@ s/n    Name    Gender   Age
 ```
 
 ##Templates and styling
-- Email templates should be named "email.html" and kept within mailer module/html_generator/template directory.
+- Email templates should be named "email.html" and kept within the following directory: `mailer_module/html_generator/template`
 - Email templates must be tagged with 2 placeholders: 
   - In the header of the email template, insert:
 ```
