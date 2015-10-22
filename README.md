@@ -21,7 +21,7 @@ My suggestion is to set the env vars to be persistent so you don't have to type 
 
 ## How to use the module
 
-####3. Create a python script in the same directory as 'Gmailer' (and this README.md)
+####Create a python script in the same directory as 'Gmailer' (and this README.md)
 Define the following in your script
 `from mailer_module.postman import Gmailer`  
 If you have set the env vars, then also include:
@@ -100,7 +100,7 @@ my_gmailer = Gmailer(
   # Message Parameters
   {
     "from_name":"John"
-    "subject":"This are my family members",
+    "subject":"A table of my family members",
     "header":"My Family"
   },
   # Table dictionary
@@ -109,7 +109,7 @@ my_gmailer = Gmailer(
     "table_title":"Family Members",
     "table_link":"http://www.myfamily.com",
     "generate_sn":False,
-    "generate_summary": 3,
+    "generate_summary": "gender",
     "table":
       # 2-D table array
       [
@@ -128,7 +128,7 @@ Gmailer will output the following in the email:
 ```
     From:    John "my_username@gmail.com"
     To:      user1@gmail.com; user2@gmail.com;
-    Subject: This are my family members
+    Subject: A table of my family members
 ```
 ```
     ------------------------------
