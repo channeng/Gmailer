@@ -2,7 +2,7 @@
 
    Gmailer simplifies the sending standard html email reports from any Gmail account.
 
-# Setting up:
+## Setting up:
 
 ####1. Set up your gmail account to allow less secure apps
    https://www.google.com/settings/security/lesssecureapps  
@@ -19,7 +19,7 @@ export GMAIL_PWD=mysecretpassword
 ```
 My suggestion is to set the env vars to be persistent so you don't have to type it each terminal session. You can do that by inserting the export commands in .profile in your root.
 
-# How to use the module
+## How to use the module
 
 ####3. Create a python script in the same directory as 'Gmailer' (and this README.md)
 Define the following in your script
@@ -57,25 +57,29 @@ Following the above arguments,
 
 #####4. any number of *args dictionaries following the format below:
 - Dictionaries, consisting of the following keywords:
-  1. table_title : string  (required - leave "" if none)
-  2. table_link : url string  (required - leave "" if none)
-  3. generate_sn : Boolean  (required - True or False)
-  4. generate_summary: integer (required -'Column number that you want to generate a summary of')
-  5. table : List of lists (required - A 2-D array containing headers)
+  1. *table_title*: string  (required - leave "" if none)
+  2. *table_link*: url string  (required - leave "" if none)
+  3. *generate_sn*: Boolean  (required - True or False)
+  4. *generate_summary*: integer (required -'Column number that you want to generate a summary of')
+  5. *table*: List of lists (required - A 2-D array containing headers)
     * Each table must be a list of lists, where the first list element must contain the headers of the table
     * Each list within the list must have the same number of elements
     * All urls within the table will automatically be converted into links, and displayed as "Link"
       * Urls must begin with 'http://' or 'https://', followed by a domain/localhost/ip address
     * Table will be generated in the same order as the list
 
-5. Execute Gmailer
+####5. Execute Gmailer
 
 Initiate the Gmailer class object
-`Mailer = Gmailer(username,password,recipient_list,dict_1,dict_2,dict_3...)`
+```
+    Mailer = Gmailer(username,password,recipient_list,dict_1,dict_2,dict_3...)
+```
 Call the send_mail method
-`Mailer.send_mail()`
+```
+    Mailer.send_mail()
+```
 
-Full Example.
+##Full Example.
 ```
 my_gmailer = Gmailer(
   {
@@ -107,7 +111,6 @@ my_gmailer.send_mail()
 
 Gmailer will output the following in the email:
 ```
-------------------------------
 From:    John "my_username@gmail.com"
 To:      user1@gmail.com; user2@gmail.com;
 Subject: This are my family members
@@ -124,11 +127,13 @@ s/n    Name    Gender   Age
  2     Lucy      F      13
  3     Jack      M      64
 
-Table link
+<Table link>
 ```
 
-6. Templates and styling
-- Email templates should be named "template.html" and kept within mailer module.
+##Templates and styling
+- Email templates should be named "email.html" and kept within mailer module/html_generator/template directory.
 - CSS Styling can be applied within the template header:
-- All tables generated are automatically classed as 'table_wrapper'
-- All table titles generated are automatically classed as 'title_wrapper'
+  - All tables generated are automatically classed as 'table_wrapper'
+  - All table titles generated are automatically classed as 'title_wrapper'
+  - Note that some email clients do not load CSS table styling within the template headers.
+    - As of last test, Gmail browser client does not load the CSS styling, but it works perfect on Apple iphone mail
