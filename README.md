@@ -90,22 +90,28 @@ Call the send_mail method
 ##Full Example.
 ```python
 my_gmailer = Gmailer(
+  # your gmail login credentials
   {
     "username":"my_username@gmail.com",
     "password":"my_password"
   },
+  # Recipients
   ["user1@gmail.com","user2@gmail.com"],
+  # Message Parameters
   {
     "from_name":"John"
     "subject":"This are my family members",
     "header":"My Family"
   },
+  # Table dictionary
   {
+    # Table parameters
     "table_title":"Family Members",
     "table_link":"http://www.myfamily.com",
     "generate_sn":False,
-    "generate_summary": 3
+    "generate_summary": 3,
     "table":
+      # 2-D table array
       [
         ["s/n","Name","Gender","Age"],
         [1,"John","M","23"],
