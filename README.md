@@ -72,7 +72,8 @@ Following the above arguments,
       * As a link : if a url string is provided
       * As a text paragraph : if no url string is provided
   3. **generate_sn**: Boolean  (required - True or False)
-  4. **generate_summary**: integer (required -'Column number that you want to generate a summary of')
+  4. **generate_summary**: string (required - leave "" if none)
+    * Header name of column for which you would like to generate a summary of
   5. **table**: List of lists (required - A 2-D array containing headers)
     * Each table must be a list of lists, where the first list element must contain the headers of the table
     * Each list within the list must have the same number of elements
