@@ -4,12 +4,12 @@
 
 ## Setting up:
 
-####1. Set up your gmail account to allow less secure apps
+####Set up your gmail account to allow less secure apps
    https://www.google.com/settings/security/lesssecureapps  
 If you turned on two-factor authentication, create an app and generate a one-time password specific for the app.  
 This will allow Gmailer to send emails from Gmail.
 
-####2. Set up environment variables for Gmail account and password
+####Set up environment variables for Gmail account and password
    (you can skip this step if you prefer to explicitly input your username and password)
 
    In terminal, type:
@@ -31,9 +31,9 @@ username = os.environ["GMAIL_USER"]
 password = os.environ["GMAIL_PWD"]
 ```
 
-####4. Create the report tables that you would like to email
+####Create the report tables that you would like to email
 
-As arguments, Gmailer class accepts the following:
+Gmailer class accepts the following arguments respectively:
 
 #####1. gmail_credentials: Dictionary of username and password
 ```
@@ -68,7 +68,7 @@ Following the above arguments,
       * Urls must begin with 'http://' or 'https://', followed by a domain/localhost/ip address
     * Table will be generated in the same order as the list
 
-####5. Execute Gmailer
+####Execute Gmailer
 
 Initiate the Gmailer class object
 ```
