@@ -132,8 +132,19 @@ s/n    Name    Gender   Age
 
 ##Templates and styling
 - Email templates should be named "email.html" and kept within mailer module/html_generator/template directory.
+- Email templates must be tagged with 2 placeholders: 
+  - In the header of the email template, insert:
+```
+    *<-- EMAIL HEADER HERE -->*
+```
+  - In the body of the email template, include:
+```
+    *<-- TABLES HERE -->*
+```
+  - These placeholders will be replaced with the html generated for 
 - CSS Styling can be applied within the template header:
-  - All tables generated are automatically classed as 'table_wrapper'
-  - All table titles generated are automatically classed as 'title_wrapper'
+  - All tables generated are automatically classed as: `class=table_wrapper`
+  - All table titles generated are automatically classed as: `class=title_wrapper`
   - Note that some email clients do not load CSS table styling within the template headers.
     - As of last test, Gmail browser client does not load the CSS styling, but it works perfect on Apple iphone mail
+    - TO_DO : apply css styling inline
