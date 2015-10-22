@@ -88,41 +88,42 @@ Call the send_mail method
     Mailer.send_mail()
 ```
 
-##Full Example.
+##Full Example
 ```python
-my_gmailer = Gmailer(
-  # your gmail login credentials
-  {
-    "username":"my_username@gmail.com",
-    "password":"my_password"
-  },
-  # Recipients
-  ["user1@gmail.com","user2@gmail.com"],
-  # Message Parameters
-  {
-    "from_name":"John"
-    "subject":"A table of my family members",
-    "header":"My Family"
-  },
-  # Table dictionary
-  {
-    # Table parameters
-    "table_title":"Family Members",
-    "table_link":"http://www.myfamily.com",
-    "generate_sn":False,
-    "generate_summary": "gender",
-    "table":
-      # 2-D table array
-      [
-        ["s/n","Name","Gender","Age"],
-        [1,"John","M","23"],
-        [2,"Lucy","F","13"],
-        [3,"Jack","M","64"]
-      ]
-  }
-)
-
-my_gmailer.send_mail()
+    # Initialize Gmailer
+    my_gmailer = Gmailer(
+      # your gmail login credentials
+      {
+        "username":"my_username@gmail.com",
+        "password":"my_password"
+      },
+      # Recipients
+      ["user1@gmail.com","user2@gmail.com"],
+      # Message Parameters
+      {
+        "from_name":"John"
+        "subject":"A table of my family members",
+        "header":"My Family"
+      },
+      # Table dictionary
+      {
+        # Table parameters
+        "table_title":"Family Members",
+        "table_link":"http://www.myfamily.com",
+        "generate_sn":False,
+        "generate_summary": "gender",
+        "table":
+          # 2-D table array with headers as first list element
+          [
+            ["s/n","Name","Gender","Age"],
+            [1,"John","M","23"],
+            [2,"Lucy","F","13"],
+            [3,"Jack","M","64"]
+          ]
+        }
+      )
+    # Call send_mail() method
+    my_gmailer.send_mail()
 ```
 
 Gmailer will output the following in the email:
@@ -145,7 +146,7 @@ Gmailer will output the following in the email:
 
     Link <http://www.myfamily.com>
 ```
-To see the package in action, set your gmail credential as env vars and execute `example.py`
+To see the package in action, set your gmail credential as env vars and execute: `example.py`
 
 ##Templates and styling
 - Email templates should be named "email.html" and kept within the following directory: `mailer_module/html_generator/template`
