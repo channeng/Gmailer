@@ -102,6 +102,7 @@ my_gmailer = Gmailer(
   },
   {
     "table_title":"Family Members",
+    "table_link":"http://www.myfamily.com",
     "generate_sn":False,
     "generate_summary": 3
     "table":
@@ -119,24 +120,25 @@ my_gmailer.send_mail()
 
 Gmailer will output the following in the email:
 ```
-From:    John "my_username@gmail.com"
-To:      user1@gmail.com; user2@gmail.com;
-Subject: This are my family members
+    From:    John "my_username@gmail.com"
+    To:      user1@gmail.com; user2@gmail.com;
+    Subject: This are my family members
 ```
 ```
-------------------------------
-          MY FAMILY
-------------------------------
-FAMILY MEMBERS
-Total: 3  | M: 2 | F: 1 |
+    ------------------------------
+              MY FAMILY
+    ------------------------------
+    FAMILY MEMBERS
+    Total: 3  | M: 2 | F: 1 |
 
-s/n    Name    Gender   Age
- 1     John      M      23
- 2     Lucy      F      13
- 3     Jack      M      64
+    s/n    Name    Gender   Age
+     1     John      M      23
+     2     Lucy      F      13
+     3     Jack      M      64
 
-<Table link>
+    Link <http://www.myfamily.com>
 ```
+To see the package in action, set your gmail credential as env vars and execute `example.py`
 
 ##Templates and styling
 - Email templates should be named "email.html" and kept within the following directory: `mailer_module/html_generator/template`
