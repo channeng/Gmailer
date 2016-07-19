@@ -26,7 +26,7 @@ class Generate_table(object):
   
   def summary(self):
     column_to_summarise = str(self.generate_summary).lower()
-    if column_to_summarise == "":
+    if column_to_summarise == "" or self.generate_summary == False:
       return ""
     else:
       header_list = [header.lower() for header in self.table_header]
