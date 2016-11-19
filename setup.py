@@ -33,13 +33,14 @@ classifiers = [
 keywords = ['gmail', 'reports', 'email', 'email tables', 'analytics', 'report', 'BI', 'Business Intelligence']
 
 setup(name='gmailer_report',
-      version='0.1a1',
+      version='0.1a3',
       description='Gmailer_report simplifies the dispatch of standard html email reports that includes tabular data from Gmail.',
       url='https://github.com/channeng/Gmailer',
       author='Shannon Chan',
       author_email='channeng@hotmail.com',
       license='MIT',
       packages=["gmailer_report"] + ["gmailer_report." + package for package in find_packages('gmailer_report')],
+      include_package_data=True,  # To include templates/email.html
       classifiers=classifiers,
       keywords=keywords,
       zip_safe=False)
