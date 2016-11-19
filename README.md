@@ -103,39 +103,49 @@ Call the send_mail method
 ```python
     from gmailer_report import Gmailer
     
+    # Gmail credentials
+    username = "my_username@gmail.com"
+    password = "secret_gmail_app_pwd"
+    gmail_credentials = {
+        "username": username,
+        "password": password
+    }
+
+    # List of recipients
+    recipients_list = ["user1@gmail.com", "user2@gmail.com"]
+
+    # Message parameters
+    message_params = {
+        "from_name": "John"
+        "subject": "A table of my family members",
+        "header": "My Family",
+        "unsubscribe_mail_to": "no-reply@ancentry.com?Subject=Unsubscribe"
+    }
+
+    # Table dictionaries
+    table_1 = {
+        "table_title": "Family Members",
+        "table_text": "http://www.myfamily.com/",  # <- Url in table text is automatically converted to link
+        "generate_sn": False,
+        "generate_summary": "gender",
+        "table":
+            [
+                ["s/n", "Name", "Gender", "Age"],   # <- Headers on the first row
+                [1, "John", "M", "23"],
+                [2, "Lucy", "F", "13"],
+                [3, "Jack", "M", "64"]
+            ]
+    }
+
     # Initialize Gmailer with gmail_credentials
     my_gmailer = Gmailer(gmail_credentials)
 
-    # Call send_mail() method with recipient list, message parameters, and table dictionaries
+    # Send mail with recipient list, message parameters and table dictionaries
     my_gmailer.send_mail(
-      # Recipients
-      [
-        "user1@gmail.com",
-        "user2@gmail.com"
-      ],
-      # Message Parameters
-      {
-        "from_name":"John"
-        "subject":"A table of my family members",
-        "header":"My Family",
-        "unsubscribe_mail_to": "no-reply@ancentry.com?Subject=Unsubscribe"
-      },
-      # Table dictionary
-      {
-        # Table parameters
-        "table_title":"Family Members",
-        "table_text":"http://www.myfamily.com",
-        "generate_sn":False,
-        "generate_summary": "gender",
-        "table":
-          # 2-D table array with headers as first list element
-          [
-            ["s/n","Name","Gender","Age"],
-            [1,"John","M","23"],
-            [2,"Lucy","F","13"],
-            [3,"Jack","M","64"]
-          ]
-      }
+        recipients_list,
+        message_params,
+        # You can input as many tables as you like, with the following table-dict format
+        table_1
     )
 ```
 
