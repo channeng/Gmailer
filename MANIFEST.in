@@ -1,0 +1,1 @@
+recursive-include gmailer_report/html_generator *.py
