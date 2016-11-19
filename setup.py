@@ -33,7 +33,7 @@ classifiers = [
 keywords = ['gmail', 'reports', 'email', 'email tables', 'analytics', 'report', 'BI', 'Business Intelligence']
 
 setup(name='gmailer_report',
-      version='0.1',
+      version='0.2a1',
       description='Gmailer_report simplifies the dispatch of standard html email reports that includes tabular data from Gmail.',
       url='https://github.com/channeng/Gmailer',
       author='Shannon Chan',
