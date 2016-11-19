@@ -176,3 +176,5 @@ To see the package in action, set your gmail credential as env vars and execute:
 - Note that some email clients do not load CSS table styling within the template headers.
     - As of last test, Gmail browser client does not load the CSS styling, but it works perfect on Apple iphone mail
     - TO_DO : apply css styling inline
+
+threaded_bq_dump_data - For running postgres to BQ imports in threads.
