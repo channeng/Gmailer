@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 import smtplib
-import os
-from html_generator.generate_html import Generate_email
+from .html_generator.generate_html import Generate_email
 import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
