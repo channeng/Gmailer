@@ -1,4 +1,4 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 
 classifiers = [
@@ -39,7 +39,7 @@ setup(name='gmailer_report',
       author='Shannon Chan',
       author_email='channeng@hotmail.com',
       license='MIT',
-      packages=['gmailer_report'],
+      packages=find_packages('gmailer_report'),
       classifiers=classifiers,
       keywords=keywords,
       zip_safe=False)
