@@ -1,6 +1,11 @@
 # What is Gmailer:
 
-   Gmailer simplifies the dispatch of standard html email reports that includes tabular data, from any Gmail account.
+   Gmailer simplifies the dispatch of standard html email reports that includes tabular data from any Gmail account.
+
+## Installation
+```bash
+    pip install gmailer_report
+```
 
 ## Setting up:
 
@@ -34,7 +39,7 @@ If you have set the env vars, then also include:
 
 ####Create the report tables that you would like to email
 
-Gmailer class accepts the following arguments respectively:
+Having set up app access permissions in your Gmail account, initialize Gmailer with your gmail credentials:
 
 #####1. gmail_credentials: Dictionary of username and password
 ```python
@@ -44,7 +49,9 @@ Gmailer class accepts the following arguments respectively:
     }
 ```
 
-#####2. recipient_list: list of strings 
+You can now send emails with Gmailer.send_mail(), which requires the following arguments respectively:
+
+#####1. recipient_list: list of strings 
 ```python
     [
       "user1@gmail.com",
@@ -53,7 +60,7 @@ Gmailer class accepts the following arguments respectively:
     ]
 ```
 
-#####3. message_params: Dictionary of message parameters
+#####2. message_params: Dictionary of message parameters
 ```python
     {
       "from_name":"John",
@@ -64,7 +71,7 @@ Gmailer class accepts the following arguments respectively:
 
 Following the above arguments,
 
-#####4. any number of *args dictionaries following the format below:
+#####3. any number of *args dictionaries following the format below:
 - Dictionaries, consisting of the following keywords:
   1. **table_title**: string  (required - leave "" if none)
   2. **table_text**: string  (required - leave "" if none)
@@ -83,24 +90,24 @@ Following the above arguments,
 
 ####Execute Gmailer
 
-Initiate the Gmailer class object
+Initiate the Gmailer class object with your gmail_credentials above
 ```python
-    Mailer = Gmailer(username,password,recipient_list,dict_1,dict_2,dict_3...)
+    Mailer = Gmailer(username,password,)
 ```
 Call the send_mail method
 ```python
-    Mailer.send_mail()
+    Mailer.send_mail(recipient_list, message_params, table_dict_1, table_dict_2, ...)
 ```
 
 ##Full Example
 ```python
-    # Initialize Gmailer
-    my_gmailer = Gmailer(
-      # your gmail login credentials
-      {
-        "username":"my_username@gmail.com",
-        "password":"my_password"
-      },
+    from gmailer_report import Gmailer
+    
+    # Initialize Gmailer with gmail_credentials
+    my_gmailer = Gmailer(gmail_credentials)
+
+    # Call send_mail() method with recipient list, message parameters, and table dictionaries
+    my_gmailer.send_mail(
       # Recipients
       [
         "user1@gmail.com",
@@ -110,7 +117,8 @@ Call the send_mail method
       {
         "from_name":"John"
         "subject":"A table of my family members",
-        "header":"My Family"
+        "header":"My Family",
+        "unsubscribe_mail_to": "no-reply@ancentry.com?Subject=Unsubscribe"
       },
       # Table dictionary
       {
@@ -127,10 +135,8 @@ Call the send_mail method
             [2,"Lucy","F","13"],
             [3,"Jack","M","64"]
           ]
-        }
-      )
-    # Call send_mail() method
-    my_gmailer.send_mail()
+      }
+    )
 ```
 
 Gmailer will output the following in the email:
@@ -153,9 +159,11 @@ Gmailer will output the following in the email:
 
     Link <http://www.myfamily.com>
 ```
-To see the package in action, set your gmail credential as env vars and execute:
+To see the package in action, run the following:
 ```python
-    python example.py
+    from gmailer_report import test
+
+    test()
 ```
 
 ##Templates and styling

@@ -77,11 +77,11 @@ class Gmailer(object):
             except:
                 print 'Report - FAILED           %-20s | From: %-15s  | To : %s' %(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), from_name, recipients)
 
-
-if __name__ == '__main__':
+def test():
+    from getpass import getpass
     # Initialize Gmailer with login credentials
-    username = os.environ["GMAIL_USER"]
-    password = os.environ["GMAIL_APP_PWD"]
+    username = raw_input("Gmail username    : ")
+    password = getpass("Gmail app password: ")
     gmail_credentials = {
         "username": username,
         "password": password
