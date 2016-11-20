@@ -4,7 +4,7 @@
 
 ## Installation
 ```bash
-    pip install gmailer_report
+pip install gmailer_report
 ```
 
 ## Setting up:
@@ -19,8 +19,8 @@
    
    In terminal, type:
 ```bash
-    export GMAIL_USER=myusername@gmail.com
-    export GMAIL_PWD=mysecretpassword
+export GMAIL_USER=myusername@gmail.com
+export GMAIL_PWD=mysecretpassword
 ```
 
    It is recommended to set the env vars to be persistent across each terminal session. You can do that by inserting the export commands above in .profile file in your root directory.
@@ -32,9 +32,9 @@ Define the following in your script
 `from mailer_module.postman import Gmailer`  
 If you have set the env vars, then also include:
 ```python
-    import os
-    username = os.environ["GMAIL_USER"]
-    password = os.environ["GMAIL_PWD"]
+import os
+username = os.environ["GMAIL_USER"]
+password = os.environ["GMAIL_PWD"]
 ```
 
 ####Create the report tables that you would like to email
@@ -43,30 +43,30 @@ Having set up app access permissions in your Gmail account, initialize Gmailer w
 
 #####1. gmail_credentials: Dictionary of username and password
 ```python
-    {
-      "username":"my_username@gmail.com",
-      "password":"my_password"
-    }
+{
+    "username": "my_username@gmail.com",
+    "password": "my_gmail_app_password"
+}
 ```
 
 You can now send emails with Gmailer.send_mail(), which requires the following arguments respectively:
 
 #####1. recipient_list: list of strings 
 ```python
-    [
-      "user1@gmail.com",
-      "user2@gmail.com", 
-      ...
-    ]
+[
+    "user1@gmail.com",
+    "user2@gmail.com", 
+    ...
+]
 ```
 
 #####2. message_params: Dictionary of message parameters
 ```python
-    {
-      "from_name":"John",
-      "subject":"This are my family members",
-      "header":"My Family"
-    }
+{
+    "from_name": "John",
+    "subject": "This are my family members",
+    "header": "My Family"
+}
 ```
 
 Following the above arguments,
@@ -92,88 +92,88 @@ Following the above arguments,
 
 Initiate the Gmailer class object with your gmail_credentials above
 ```python
-    Mailer = Gmailer(username,password,)
+Mailer = Gmailer(gmail_credentials)
 ```
 Call the send_mail method
 ```python
-    Mailer.send_mail(recipient_list, message_params, table_dict_1, table_dict_2, ...)
+Mailer.send_mail(recipient_list, message_params, table_dict_1, table_dict_2, ...)
 ```
 
 ##Full Example
 ```python
-    from gmailer_report import Gmailer
-    
-    # Gmail credentials
-    username = "my_username@gmail.com"
-    password = "secret_gmail_app_pwd"
-    gmail_credentials = {
-        "username": username,
-        "password": password
-    }
+from gmailer_report import Gmailer
 
-    # List of recipients
-    recipients_list = ["user1@gmail.com", "user2@gmail.com"]
+# Gmail credentials
+username = "my_username@gmail.com"
+password = "secret_gmail_app_pwd"
+gmail_credentials = {
+    "username": username,
+    "password": password
+}
 
-    # Message parameters
-    message_params = {
-        "from_name": "John"
-        "subject": "A table of my family members",
-        "header": "My Family",
-        "unsubscribe_mail_to": "no-reply@ancentry.com?Subject=Unsubscribe"
-    }
+# List of recipients
+recipients_list = ["user1@gmail.com", "user2@gmail.com"]
 
-    # Table dictionaries
-    table_1 = {
-        "table_title": "Family Members",
-        "table_text": "http://www.myfamily.com/",  # <- Url in table text is automatically converted to link
-        "generate_sn": False,
-        "generate_summary": "gender",
-        "table":
-            [
-                ["s/n", "Name", "Gender", "Age"],   # <- Headers on the first row
-                [1, "John", "M", "23"],
-                [2, "Lucy", "F", "13"],
-                [3, "Jack", "M", "64"]
-            ]
-    }
+# Message parameters
+message_params = {
+    "from_name": "John"
+    "subject": "A table of my family members",
+    "header": "My Family",
+    "unsubscribe_mail_to": "no-reply@ancentry.com?Subject=Unsubscribe"
+}
 
-    # Initialize Gmailer with gmail_credentials
-    my_gmailer = Gmailer(gmail_credentials)
+# Table dictionaries
+table_1 = {
+    "table_title": "Family Members",
+    "table_text": "http://www.myfamily.com/",  # <- Url in table text is automatically converted to link
+    "generate_sn": False,
+    "generate_summary": "gender",
+    "table":
+        [
+            ["s/n", "Name", "Gender", "Age"],   # <- Headers on the first row
+            [1, "John", "M", "23"],
+            [2, "Lucy", "F", "13"],
+            [3, "Jack", "M", "64"]
+        ]
+}
 
-    # Send mail with recipient list, message parameters and table dictionaries
-    my_gmailer.send_mail(
-        recipients_list,
-        message_params,
-        # You can input as many tables as you like, with the following table-dict format
-        table_1
-    )
+# Initialize Gmailer with gmail_credentials
+my_gmailer = Gmailer(gmail_credentials)
+
+# Send mail with recipient list, message parameters and table dictionaries
+my_gmailer.send_mail(
+    recipients_list,
+    message_params,
+    # You can input as many tables as you like, with the following table-dict format
+    table_1
+)
 ```
 
 Gmailer will output the following in the email:
 ```
-    From:    John "my_username@gmail.com"
-    To:      user1@gmail.com; user2@gmail.com;
-    Subject: A table of my family members
+From:    John "my_username@gmail.com"
+To:      user1@gmail.com; user2@gmail.com;
+Subject: A table of my family members
 ```
 ```
-    ------------------------------
-              MY FAMILY
-    ------------------------------
-    FAMILY MEMBERS
-    Total: 3  | M: 2 | F: 1 |
+------------------------------
+          MY FAMILY
+------------------------------
+FAMILY MEMBERS
+Total: 3  | M: 2 | F: 1 |
 
-    s/n    Name    Gender   Age
-     1     John      M      23
-     2     Lucy      F      13
-     3     Jack      M      64
+s/n    Name    Gender   Age
+ 1     John      M      23
+ 2     Lucy      F      13
+ 3     Jack      M      64
 
-    Link <http://www.myfamily.com>
+Link <http://www.myfamily.com>
 ```
 To see the package in action, run the following:
 ```python
-    from gmailer_report import test
+from gmailer_report import test
 
-    test()
+test()
 ```
 
 ##Templates and styling
@@ -182,11 +182,11 @@ To see the package in action, run the following:
   - These placeholders will be replaced with the html generated by the package
   - In the header of the email template, insert:
 ```
-    *<-- EMAIL HEADER HERE -->*
+*<-- EMAIL HEADER HERE -->*
 ```
   - In the body of the email template, include:
 ```
-    *<-- TABLES HERE -->*
+*<-- TABLES HERE -->*
 ```
 - CSS Styling can be applied within the template header:
   - All tables generated are automatically classed as: `class=table_wrapper`
