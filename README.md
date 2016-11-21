@@ -11,8 +11,9 @@ pip install gmailer_report
 
 ####Set up your gmail account to allow less secure apps
 - To allow Gmailer to send emails from Gmail.
-  - (Link to setup)[https://www.google.com/settings/security/lesssecureapps]
-  - If you turned on two-factor authentication, create an app and generate a one-time password specific for the app.  
+  - For users who turned on two-factor authentication, please create an app-specific password. (Link to generate app-specific password)[https://security.google.com/settings/security/apppasswords]
+  - For users who have not turned on two-factor authentication, please register app to allow permission as less secure apps. (Link to setup)[https://www.google.com/settings/security/lesssecureapps]
+  
 
 ####Set up environment variables for Gmail account and password (Recommended)
    *You can skip this step if you prefer to explicitly input your username and password*
